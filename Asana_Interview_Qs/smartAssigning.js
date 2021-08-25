@@ -16,7 +16,7 @@ function smartAssigning(names, statuses, projects, tasks) {
       if (HAindex === -1 && !statuses[i]) {
           HAindex = i;
       } else if (HAindex > -1 && !statuses[i]) {
-          if (tasks[i] < tasks[HAindex] ) {
+          if (tasks[i] < tasks[HAindex] || (tasks[i] === tasks[HAindex] && projects[i] < projects[HAindex])) {
           HAindex = i;
       }
       }
