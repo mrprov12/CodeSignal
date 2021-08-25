@@ -43,3 +43,32 @@ function firstDuplicate(a) {
 
   return lowest2ndIndex === -1 ? -1 : a[lowest2ndIndex];
 }
+
+
+//final solution
+//remember, objects and hash tables are wayyyyy faster than arrays to traverse!
+
+function firstDuplicate(a) {
+  let lowest2ndIndex = -1;
+
+  let dupes = {'dupeElems': []};
+
+  a.forEach((e, i) => {
+     if (!dupes.hasOwnProperty(e)) {
+         dupes[e] = [i];
+     } else {
+         dupes[e].push(i);
+         dupes['dupeElems'].push(e);
+     }
+  })
+
+  dupes['dupeElems'].forEach(e => {
+      if (lowest2ndIndex === -1 || lowest2ndIndex > dupes[e][1]) {
+          lowest2ndIndex = dupes[e][1];
+      }
+  })
+
+
+
+  return lowest2ndIndex === -1 ? -1 : a[lowest2ndIndex];
+}
